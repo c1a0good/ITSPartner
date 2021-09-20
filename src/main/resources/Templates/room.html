@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="../roomSocket.js"></script>
+<head>
+
+    <meta charset="UTF-8">
+    <title th:utext="${room.name}"></title>
+</head>
+<body>
+    <a id="bulbState" th:utext="${room.state} ? 'Lights are on' : 'Lights are off'"></a>
+    </br>
+    <form id="mainForm">
+        <input type="hidden" th:value="${room.id}" id="roomId">
+        <input type="submit" value="Switch" id="switchButton">
+    </form>
+    <form id="deleteForm" th:action="@{/rooms/{id}(id = ${room.id})}" th:method="delete">
+        <input type="submit" value="Delete" id="deleteButton">
+    </form>
+<a th:href="@{/rooms}">Back</a>
+</body>
+</html>

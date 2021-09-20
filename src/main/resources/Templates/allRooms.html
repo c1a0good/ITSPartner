@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rooms</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>name</th>
+        <th>country</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr th:each="room : ${rooms}">
+        <td th:utext="${room.name}"></td>
+        <td th:utext="${room.country}"></td>
+        <td><form th:action="@{/rooms/{id}(id = ${room.id})}" method="get"><input type="submit" value="Enter the room"></form> </td>
+    </tr>
+</table>
+<a th:href="@{/rooms/create}">Create new room</a>
+</body>
+</html>
